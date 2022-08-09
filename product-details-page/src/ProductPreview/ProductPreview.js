@@ -6,16 +6,24 @@ const ProductPreview = (props) => {
     const currentMinutes =  new Date().getMinutes() > 9 ? new Date().getMinutes() : '0' + new Date().getMinutes();
   return (
     <div className={classes.ProductPreview}>
-        <img src='https://imgur.com/iOeUBV7.png' alt='Product Preview'/>
+        <img src={props.currentPreviewImage} alt='Product Preview'/>
 
-        <div className={classes.TimeSection}>
-        <p>{`${currentHour}:${currentMinutes}`}</p>
-        </div>
+        {
+          props.showHeartBeatSection ?
+          <div className={classes.HeartBeatSection}>
+            <i className="fas fa-heartbeat"></i>
+            <p>78</p>
+          </div>
 
-        {/* <div className={classes.HeartBeatSection}>
-        <i class="fas fa-heartbeat"></i>
-        <p>78</p> */}
-        {/* </div> */}
+          :
+
+          <div className={classes.TimeSection}>
+            <p>{`${currentHour}:${currentMinutes}`}</p>
+          </div>
+
+        }
+        
+        
     </div>
   )
 }
